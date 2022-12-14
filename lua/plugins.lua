@@ -82,18 +82,21 @@ packer.startup(function(use)
 
   -- managing & installing lsp servers, linting & formatters
   use 'williamboman/mason.nvim' -- managind lsp servers
+  use 'williamboman/mason-lspconfig.nvim'
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
   use 'saadparwaiz1/cmp_luasnip'
 
-  -- configure lsp servers
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'hrsh7th/cmp-nvim-lsp'
+ -- configuring lsp servers
+  use("neovim/nvim-lspconfig") -- easily configure language servers
+  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion  -- Linting
 
-  -- Linting
+  -- formatting & linting
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jayp0521/mason-null-ls.nvim'
 
@@ -147,6 +150,6 @@ packer.startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  use 'jiangmiao/auto-pairs'
+  --use 'jiangmiao/auto-pairs'
 
 end)
